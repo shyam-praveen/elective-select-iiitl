@@ -1,10 +1,11 @@
 import { useForm } from '@mantine/form'
-import { TextInput, Button, Group, Select } from '@mantine/core'
+import { NumberInput, Button, Group, Select } from '@mantine/core'
 
 export default function SelectElective() {
   const form = useForm({
     initialValues: {
       email: 'student@iiitl.ac.in',
+      cgpa: '',
       elective: '',
     },
   })
@@ -13,6 +14,17 @@ export default function SelectElective() {
     <div style={{ maxWidth: 320, margin: 'auto' }}>
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
         {/* <TextInput label="Name" placeholder="Name" {...form.getInputProps('name')} /> */}
+        <NumberInput
+          required
+          label="CGPA"
+          defaultValue={0}
+          precision={2}
+          min={0}
+          step={0.005}
+          max={10}
+          {...form.getInputProps('cgpa')}
+        />
+
         <Select
           required
           style={{ marginTop: 20, zIndex: 2 }}

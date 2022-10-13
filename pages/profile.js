@@ -39,6 +39,7 @@ export default function Profile() {
               Student Name
             </Text>
             <Text size="sm" color="dimmed" mt={5}>
+              Branch of the student. <br />
               Instructions regarding elective selection.
             </Text>
           </Card>
