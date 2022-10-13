@@ -18,18 +18,31 @@ export default function Profile() {
       {!login ? (
         <Button onClick={() => setLogin(true)}>Login with google</Button>
       ) : (
-        <Card withBorder radius="md">
-          <Group position="apart">
-            <Badge>lci2020043@iiitl.ac.in</Badge>
-          </Group>
+        <div
+          style={{
+            maxWidth: 320,
+            margin: 'auto',
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            gap: '1rem',
+          }}
+        >
+          <Button onClick={() => setLogin(false)}>Logout</Button>
 
-          <Text size="lg" weight={500} mt="md">
-            Student Name
-          </Text>
-          <Text size="sm" color="dimmed" mt={5}>
-            Instructions regarding elective selection.
-          </Text>
-        </Card>
+          <Card withBorder radius="md">
+            <Group position="apart">
+              <Badge>lci2020043@iiitl.ac.in</Badge>
+            </Group>
+
+            <Text size="lg" weight={500} mt="md">
+              Student Name
+            </Text>
+            <Text size="sm" color="dimmed" mt={5}>
+              Instructions regarding elective selection.
+            </Text>
+          </Card>
+        </div>
       )}
     </div>
   )

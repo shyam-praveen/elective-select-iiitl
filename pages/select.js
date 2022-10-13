@@ -4,7 +4,7 @@ import { TextInput, Button, Group, Select } from '@mantine/core'
 export default function SelectElective() {
   const form = useForm({
     initialValues: {
-      email: '',
+      email: 'student@iiitl.ac.in',
       elective: '',
     },
   })
