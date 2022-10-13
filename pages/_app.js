@@ -25,11 +25,7 @@ function MyApp({ Component, pageProps }) {
             links={[
               { link: '/', label: 'Home' },
               { link: '/profile', label: 'Profile' },
-              { link: '/edit', label: 'Edit' },
-              { link: '/share', label: 'Share' },
-              { link: '/retrieve', label: 'Retrieve' },
-              { link: '/access', label: 'Access' },
-              { link: '/marketplace', label: 'Marketplace' },
+              { link: '/select', label: 'Elective Select' },
             ]}
           />
           <Component {...pageProps} />
