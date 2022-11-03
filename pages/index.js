@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createStyles, Title, Text, Button, Container, useMantineTheme } from '@mantine/core'
 import { Dots } from '../assets/dots'
 import { useRouter } from 'next/router'
+import { useUser } from '@auth0/nextjs-auth0'
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -89,6 +90,12 @@ export default function Home() {
   const router = useRouter()
   const { classes } = useStyles()
   const theme = useMantineTheme()
+  const { user, isLoading } = useUser()
+
+  useEffect(() => {
+    console.log(user, isLoading)
+    if (user || isLoading) router.push('/profile')
+  }, [])
 
   return (
     <Container className={classes.wrapper} size={1400}>
