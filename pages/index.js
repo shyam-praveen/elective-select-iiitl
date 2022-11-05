@@ -92,10 +92,10 @@ export default function Home() {
   const theme = useMantineTheme()
   const { user, isLoading } = useUser()
 
-  useEffect(() => {
-    console.log(user, isLoading)
-    if (user || isLoading) router.push('/profile')
-  }, [])
+  // useEffect(() => {
+  //   console.log(user, isLoading)
+  //   if (user || isLoading) router.push('/profile')
+  // }, [])
 
   return (
     <Container className={classes.wrapper} size={1400}>

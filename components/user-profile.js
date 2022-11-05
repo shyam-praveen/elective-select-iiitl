@@ -13,14 +13,15 @@ const useStyles = createStyles(() => ({
 }))
 
 export default function UserProfile({ user }) {
-  const { email, name } = user
+  const { nickname, name } = user
+  console.log(user)
   const { classes } = useStyles()
 
   return (
     <div>
       <Card withBorder radius="md" className={classes.wrapper}>
         <Group position="apart">
-          <Badge>{email}</Badge>
+          <Badge>{nickname}</Badge>
         </Group>
 
         <Text size="lg" weight={500} mt="md">
