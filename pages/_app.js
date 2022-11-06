@@ -1,6 +1,7 @@
 import { ColorSchemeProvider, MantineProvider } from '@mantine/core'
 import { useHotkeys, useLocalStorage } from '@mantine/hooks'
 import { NotificationsProvider } from '@mantine/notifications'
+import { UserProvider } from '@auth0/nextjs-auth0'
 
 import { AppHeader } from '../components/app-header'
 
@@ -18,20 +19,22 @@ function MyApp({ Component, pageProps }) {
   useHotkeys([['mod+J', () => toggleColorScheme()]])
 
   return (
-    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-        <NotificationsProvider>
-          <AppHeader
-            links={[
-              { link: '/', label: 'Home' },
-              { link: '/profile', label: 'Profile' },
-              { link: '/select', label: 'Elective Select' },
-            ]}
-          />
-          <Component {...pageProps} />
-        </NotificationsProvider>
-      </MantineProvider>
-    </ColorSchemeProvider>
+    <UserProvider>
+      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+        <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+          <NotificationsProvider>
+            <AppHeader
+              links={[
+                { link: '/', label: 'Home' },
+                { link: '/profile', label: 'Profile' },
+                { link: '/select', label: 'Elective Select' },
+              ]}
+            />
+            <Component {...pageProps} />
+          </NotificationsProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </UserProvider>
   )
 }
 

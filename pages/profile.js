@@ -1,8 +1,16 @@
 import { Card, Avatar, Text, Button, Badge, Group, ActionIcon } from '@mantine/core'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useUser } from '@auth0/nextjs-auth0'
+import UserProfile from '../components/user-profile'
 
 export default function Profile() {
-  const [login, setLogin] = useState(false)
+  const { user, error, isLoading } = useUser()
+  const router = useRouter()
+  console.log(user)
+
+  if (isLoading) return <div>Loading...</div>
+  if (error) return <div>{error.message}</div>
 
   return (
     <div
@@ -15,8 +23,8 @@ export default function Profile() {
         gap: '3rem',
       }}
     >
-      {!login ? (
-        <Button onClick={() => setLogin(true)}>Login with google</Button>
+      {!user ? (
+        <Button onClick={() => router.push('/api/auth/login')}>Login with google</Button>
       ) : (
         <div
           style={{
@@ -28,21 +36,8 @@ export default function Profile() {
             gap: '1rem',
           }}
         >
-          <Button onClick={() => setLogin(false)}>Logout</Button>
-
-          <Card withBorder radius="md">
-            <Group position="apart">
-              <Badge>lci2020043@iiitl.ac.in</Badge>
-            </Group>
-
-            <Text size="lg" weight={500} mt="md">
-              Student Name
-            </Text>
-            <Text size="sm" color="dimmed" mt={5}>
-              Branch of the student. <br />
-              Instructions regarding elective selection.
-            </Text>
-          </Card>
+          <Button onClick={() => router.push('/api/auth/logout')}>Logout</Button>
+          <UserProfile user={user} />
         </div>
       )}
     </div>
